@@ -1,0 +1,59 @@
+<!-- <div class="container">
+    <h1>Login Form</h1>
+    <form #uploadForm="ngForm" (ngSubmit)="upload(uploadForm.value)" enctype="multipart/form-data">
+        <div class="form-group">
+        <label for="songName">Song Name</label>
+        <input type="text" class="form-control" id="songName" required
+                [(ngModel)]="songName" name="songName">
+        </div>
+
+        <div class="form-group">
+        <label for="genre">Genre</label>
+        <input type="text" class="form-control" id="genre"
+                [(ngModel)]="genre" name="genre">
+        </div>
+
+        <div class="form-group">
+            <label for="songFile">Song File</label>
+            <input type="file" class="form-control" id="songFile"
+                    [(ngModel)]="songFile" name="songFile">
+        </div>
+
+        <div class="form-group">
+            <label for="imgFile">Image File</label>
+            <input type="file" class="form-control" id="imgFile"
+                    [(ngModel)]="imgFile" name="imgFile">
+        </div>
+
+        <button type="submit" class="btn btn-success" >Submit</button>
+
+    </form>
+</div> -->
+
+<div class="container">
+    <h1>Login Form</h1>
+    <form #uploadForm="ngForm" (ngSubmit)="onSubmit(uploadForm.value)">
+        <div class="form-group">
+        <label for="songName">Song Name</label>
+        <input type="text" class="form-control" id="songName" name="songName" [(ngModel)]="songName" required/>
+        </div>
+
+        <div class="form-group">
+        <label for="genre">Genre</label>
+        <input type="text" class="form-control" id="genre" name="genre" [(ngModel)]="genre"/>
+        </div>
+
+        <div class="form-group">
+            <label for="songFile">Song File</label>
+            <input type="file" class="form-control" id="songFile" name="songFile" (change)="onFirstFileSelect($event)"/>
+        </div>
+
+        <div class="form-group">
+            <label for="imgFile">Image File</label>
+            <input type="file" class="form-control" id="imgFile" name="imgFile" (change)="onSecFileSelect($event)"/>
+        </div>
+
+        <button type="submit" class="btn btn-success" >Submit</button>
+
+    </form>
+</div>
