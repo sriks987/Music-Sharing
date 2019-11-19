@@ -13,9 +13,8 @@ export class UploadSongComponent implements OnInit {
 
   SERVER_URL = "http://0.0.0.0:5000/api/songs/upload";
   giveForm: FormGroup;
-  //@Input() formGroup: any;
 
-  constructor(private songServ: SongService, private formBuilder: FormBuilder, private httpClient:HttpClient) { 
+  constructor(private songService: SongService, private formBuilder: FormBuilder, private httpClient:HttpClient) { 
 
   }
 
@@ -38,11 +37,6 @@ export class UploadSongComponent implements OnInit {
       const file = event.target.files[0];
       this.giveForm.get('imgFile').setValue(file);
     }
-  }
-
-  upload(value){
-    console.log(value)
-    this.songServ.uploadSong(value)
   }
 
   onSubmit(value) {

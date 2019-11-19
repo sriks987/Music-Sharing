@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SongService } from '../song.service';
+import { ISong } from '../song.model';
 
 @Component({
   selector: 'app-music-list',
@@ -8,12 +9,13 @@ import { SongService } from '../song.service';
 })
 export class MusicListComponent implements OnInit {
 
-  @Output() songIdent = new EventEmitter()
+  songList: ISong[]
 
-  constructor(private songServ: SongService) { 
-    this.songServ.searchName$.subscribe(
+  constructor(private songService: SongService) { 
+    this.songService.searchName$.subscribe(
       newName => {
         console.log(`${newName} is the new name`);
+        this.songService.getSongList(newName).subscribe(resp => this.songList = resp);
       }
     )
   }
@@ -21,6 +23,9 @@ export class MusicListComponent implements OnInit {
   ngOnInit() {
   }
 
-  
+  openSong(song){
+    this.songService.getSong(song.songUrl);
+  }
+
 
 }

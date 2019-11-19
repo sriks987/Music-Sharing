@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service'; 
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -7,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  loginStatus: number
 
-  constructor() {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
@@ -16,5 +19,13 @@ export class LoginComponent implements OnInit {
 
   login(value){
     console.log(value);
+    this.loginStatus = this.authService.valLogin(value)
+    console.log("loginStatus: "+ this.loginStatus)
+    if(this.loginStatus == 1){
+      console.log("Comes here")
+      this.router.navigate(['home'])
+    }
+    console.log("Comes outside")
+    
   }
 }

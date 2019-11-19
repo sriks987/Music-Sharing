@@ -5,10 +5,11 @@ import { RecommendListComponent } from './recommend-list/recommend-list.componen
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { MusicListComponent } from './music-list/music-list.component';
 import { UploadSongComponent } from './upload-song/upload-song.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'home', component: RecommendListComponent},
+  { path: 'home', component: HomeComponent},
   { path: 'search', component: MusicListComponent},
   { path: 'upload', component: UploadSongComponent}
 ];

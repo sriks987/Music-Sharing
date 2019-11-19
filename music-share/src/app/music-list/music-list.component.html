@@ -1,4 +1,33 @@
-<app-search-bar></app-search-bar>
-<!-- <table *ngFor="let song of songList">
-    <app-music-thumbnail [details]="song"></app-music-thumbnail>
-</table> -->
+<div class = "container-fluid" style="background-image: linear-gradient(black, rgb(94, 94, 94)); height: 100%; width: 100%;">
+    <div class = "row">
+        <div class = "col-sm-4">
+                <app-nav-bar></app-nav-bar>
+        </div>
+        <div class = "col-sm-4">
+                <div class = "row">
+                    <div class = "col-sm-12">
+                        <app-search-bar style="align-content: center;"></app-search-bar>
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class = "col-sm-12">
+                        <table class="music" style="align-content: center;">
+                            <th>Song Name</th>
+                            <th>Genre</th> 
+                            
+                            <tr *ngFor="let song of songList" (click)="openSong(song)">
+                                    <td>{{song.name}}</td>
+                                    <td>{{song.genre}}</td>        
+                            </tr>
+                        </table>
+                    </div> 
+                </div>    
+        </div>
+        <div class ="col-sm-4">
+            <!-- <app-user-profile></app-user-profile> -->
+        </div>
+    </div>
+    <div class = "row">
+        <footer class="border border-primary" class="w-100"><app-player-controls></app-player-controls></footer>
+    </div>
+</div>

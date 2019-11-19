@@ -1,4 +1,5 @@
-<div>
-    <input type="text" (ngModelChange)="setSearchName()" id="name" [(ngModel)]="name"/>
-    <p>{{name}}</p>
+
+
+<div class="input-group mb-3">
+    <input type="text" class="form-control border border-dark" placeholder="Search for music" (ngModelChange)="setSearchName()" id="name" [(ngModel)]="name">
 </div>

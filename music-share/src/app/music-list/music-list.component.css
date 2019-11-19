@@ -1,0 +1,26 @@
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+.music{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.music th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:hover {background-color: rgb(8, 185, 17);}
+
+td, th {
+    border: 1px solid rgb(0, 0, 0);
+    padding: 8px;
+    color: whitesmoke;
+}
