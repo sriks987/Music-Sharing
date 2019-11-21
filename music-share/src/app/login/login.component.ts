@@ -18,12 +18,16 @@ export class LoginComponent implements OnInit {
   }
 
   login(value){
-    console.log(value);
+    console.log(value)
     this.loginStatus = this.authService.valLogin(value)
     console.log("loginStatus: "+ this.loginStatus)
     if(this.loginStatus == 1){
       console.log("Comes here")
       this.router.navigate(['home'])
+    }
+    else if(this.loginStatus == 0){
+      console.log("Wrong password")
+      alert("You have entered the wrong password")
     }
     console.log("Comes outside")
     

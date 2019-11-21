@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -20,10 +19,11 @@ export class UserService {
     this.httpClient.post<any>("http://5000/api/user/signup", JSON.stringify(values)).subscribe(
       (res) => {
         this.currUser = JSON.parse(res); 
-        this.router.navigate(['/home']);},
+        return 1;
+      },
       (err) => {
         console.log(err); 
-        this.router.navigate['/signup'];
+        return 0;
       } 
     );
   }

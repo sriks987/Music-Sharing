@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SongService } from '../song.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  songList: any;
 
-  ngOnInit() {
+  constructor(private songService: SongService, private userService: UserService) { 
+
   }
 
+  ngOnInit() {
+    this.getRecommendation()
+  }
+
+  getRecommendation(){
+    //this.songList = this.songService.getRecommendedList();
+    this.songList = [{songName: "hello"}]
+  }
 }

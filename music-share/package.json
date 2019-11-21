@@ -26,6 +26,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "hammerjs": "^2.0.8",
+    "ng5-slider": "^1.2.4",
     "ngx-audio-player": "^8.0.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",

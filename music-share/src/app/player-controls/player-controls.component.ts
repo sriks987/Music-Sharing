@@ -15,14 +15,13 @@ export class PlayerControlsComponent implements OnInit {
   msbapDisplayVolumeControls = true
 
   constructor(private songService: SongService) { 
-    this.msbapAudioUrl = 'http://127.0.0.1:5000/uploads/01._tokyo.mp3'
+    this.msbapAudioUrl = null
     this.msbapTitle = 'hi'
     this.msbapDisplayTitle = true
 
     this.songService.currSong$.subscribe(
       newUrl => {
         console.log(`${newUrl} is the new song`);
-        //this.songService.getSongList(newName).subscribe(resp => this.songList = resp);
         this.msbapAudioUrl = newUrl;
       }
     )

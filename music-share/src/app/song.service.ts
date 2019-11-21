@@ -47,7 +47,7 @@ export class SongService {
   }
 
   
-  getRecommendedList(song){
+  getRecommendedList(){
     console.log("Genre history is: " + this.genreHistory)
 
     return 

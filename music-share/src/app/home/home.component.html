@@ -1,10 +1,14 @@
 <div class = "container-fluid" style="background-image: linear-gradient(black, rgb(94, 94, 94));; height: 100%; width: 100%;">
         <div class = "row">
-            <div class = "col-sm-4">
+            <div class = "col-sm-4 p-0">
                     <app-nav-bar></app-nav-bar>
             </div>
             <div class = "col-sm-4">
-                    <!-- RECOMMENDED SONGS COME HERE-->    
+                    <div class="row">
+                        <div *ngFor="let song of songList">
+                            <app-recommended-thumbnail [details]="song"></app-recommended-thumbnail>
+                        </div>
+                    </div>    
             </div>
         </div>
         <div class = "row">
