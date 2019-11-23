@@ -10,7 +10,7 @@ export class SearchBarComponent implements OnInit {
 
   name: string
 
-  constructor(private songServe: SongService) { 
+  constructor(private songService: SongService) { 
     
   }
 
@@ -19,7 +19,7 @@ export class SearchBarComponent implements OnInit {
 
   setSearchName(){
     //console.log("in bar: " + this.name)
-    this.songServe.newSearchName(this.name)
+    this.songService.newSearchName(this.name)
   }
 
 }

@@ -6,6 +6,7 @@ import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -51,7 +52,8 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     FormsModule,
     ReactiveFormsModule,
     MatGridListModule,
-    MatSliderModule
+    MatSliderModule,
+    MatToolbarModule
   ],
   providers: [SongService, UserService, AuthService],
   bootstrap: [AppComponent]

@@ -20,7 +20,15 @@ export class HomeComponent implements OnInit {
   }
 
   getRecommendation(){
-    //this.songList = this.songService.getRecommendedList();
-    this.songList = [{songName: "hello"}]
+    this.songService.getRecommendedList(this.userService.currUser.userID)
+    .subscribe(
+      (res) => {
+        this.songList = res;
+      },
+      (err) => {
+        console.log("Error")
+      }
+    )
+    
   }
 }

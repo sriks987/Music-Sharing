@@ -4,6 +4,12 @@ import { ISong } from './song.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+  })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -42,15 +48,15 @@ export class SongService {
   }
 
   getSongList(name:string):Observable<ISong[]> {
-    return this.http.get<any>('http://0.0.0.0:5000/api/songs/getlist/' + name)
+    return this.http.get<any>('http://0.0.0.0:5000/api/songs/getlist/' + name, httpOptions)
       .pipe(catchError(this.handleError<ISong[]>('getSongList', [])))
   }
 
   
-  getRecommendedList(){
-    console.log("Genre history is: " + this.genreHistory)
-
-    return 
+  getRecommendedList(userid){
+    console.log("Genre history is: " + JSON.stringify(this.genreHistory))
+    return this.http.post<any>('http://127.0.0.1:5000/api/songs/recommend', JSON.stringify({userID: userid, history: this.genreHistory}), httpOptions)
+     
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

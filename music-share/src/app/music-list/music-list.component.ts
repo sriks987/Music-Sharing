@@ -24,7 +24,7 @@ export class MusicListComponent implements OnInit {
   }
 
   openSong(song){
-    this.songService.getSong(song.songUrl);
+    this.songService.getSong(song.songURL);
   }
 
 

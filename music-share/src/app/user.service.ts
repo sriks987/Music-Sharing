@@ -1,14 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+  })
+};
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
-  currUser: any
+  @Input() currUser: any  
 
   constructor(private httpClient:HttpClient, private router:Router) {
     this.currUser = {}
@@ -16,7 +23,7 @@ export class UserService {
 
   signup(values){
     console.log(values);
-    this.httpClient.post<any>("http://5000/api/user/signup", JSON.stringify(values)).subscribe(
+    this.httpClient.post<any>("http://5000/api/user/signup", JSON.stringify(values), httpOptions).subscribe(
       (res) => {
         this.currUser = JSON.parse(res); 
         return 1;

@@ -22,7 +22,7 @@ export class PlayerControlsComponent implements OnInit {
     this.songService.currSong$.subscribe(
       newUrl => {
         console.log(`${newUrl} is the new song`);
-        this.msbapAudioUrl = newUrl;
+        this.msbapAudioUrl = "http://127.0.0.1:5000"+newUrl;
       }
     )
   }

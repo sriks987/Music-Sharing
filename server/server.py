@@ -76,8 +76,9 @@ def getSongList(name):
     searchTerm = start + name + end
     if(name != ''):
         print(searchTerm)
-        cursor = db.songs.find({'name': {'$regex': searchTerm}}, {'_id': 0})
+        cursor = db.songs.find({'songName': {'$regex': searchTerm}}, {'_id': 0})
     respList = list(cursor)
+    print(respList)
     return json.dumps(respList), 200
 
 @app.route('/api/songs/recommend', methods=['POST'])
@@ -86,10 +87,10 @@ def recommendSongs():
     historyList = request.json["history"]
     userID = request.json["userID"]
     # Getting the history of every other user
-    cursor = list(db.history.find({"userID": { "$not": userID } }))
+    cursor = list(db.history.find({}, {'_id':0}))
 
     # Getting the history of that user
-    userHistory = db.history.find_one({"userID": userID})
+    userHistory = db.history.find_one({"userID": userID}, {'_id': 0})
     
     # Updating the history 
     for key, value in historyList.items():
@@ -107,7 +108,7 @@ def recommendSongs():
         sum_ele = 0
         for i in sum_list:
             sum_ele += i[1] * i[2]
-        if sum_ele > max_sum:
+        if sum_ele > max_sum and userHistory['userID']==pref['userID']:
             max_sum = sum_ele
             max_dict = pref
     max_ele = ""
@@ -123,11 +124,15 @@ def valLogin():
     print("Entered valLogin")
     userName = request.json["username"]
     password = request.json["password"]
-    expectedRecord = db.users.find_one({"userName": userName})
+    expectedRecord = db.users.find_one({"userName": userName}, {'_id': 0})
     if(expectedRecord == None):
+        print("Invalid user")
         return json.dumps({'val': 0}), 200
-    elif(expectedRecord.password != password):
+    elif(expectedRecord["password"] != password):
+        print("Invalid user")
         return json.dumps({'val': 0}), 200
+    print("Valid user")
+    print("The userDetails are: ", expectedRecord)
     return json.dumps({'val': 1, 'userDetails': expectedRecord}), 200
 
 @app.route('/api/user/signup', methods =['POST'])
@@ -171,6 +176,7 @@ def changeUserDetails():
 @app.route('/api/user/logout', methods = ['GET'])
 def logout():
     return json.dumps({}), 200
+
 
 if __name__=="__main__":
     app.run(debug=True)
